@@ -1,0 +1,24 @@
+<?php
+
+namespace App\Models\Models;
+
+use Database\Factories\AuthorFactory;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class Author extends Model
+{
+    use HasFactory;
+
+    protected $fillable = ['name', 'bio', 'birth_date'];
+
+    public function books()
+    {
+        return $this->hasMany(Book::class);
+    }
+
+    protected static function newFactory()
+    {
+        return AuthorFactory::new();
+    }
+}
